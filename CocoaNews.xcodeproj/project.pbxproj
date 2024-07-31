@@ -57,6 +57,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BE07D6CD2C5AB3CF00F685D1 /* AppConfig */ = {
+			isa = PBXGroup;
+			children = (
+				BE1EB9B12C5811A80071CF37 /* AppDelegate.swift */,
+				BE1EB9B32C5811A80071CF37 /* SceneDelegate.swift */,
+				BE1EB9BA2C5811AA0071CF37 /* Assets.xcassets */,
+				BE1EB9BC2C5811AA0071CF37 /* LaunchScreen.storyboard */,
+				BE1EB9BF2C5811AA0071CF37 /* Info.plist */,
+			);
+			path = AppConfig;
+			sourceTree = "<group>";
+		};
+		BE07D6CE2C5AB3E300F685D1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BE07D6CF2C5AB40A00F685D1 /* UI */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		BE07D6CF2C5AB40A00F685D1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BE1EB9B52C5811A80071CF37 /* ViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		BE1EB9A52C5811A80071CF37 = {
 			isa = PBXGroup;
 			children = (
@@ -78,12 +106,8 @@
 		BE1EB9B02C5811A80071CF37 /* CocoaNews */ = {
 			isa = PBXGroup;
 			children = (
-				BE1EB9B12C5811A80071CF37 /* AppDelegate.swift */,
-				BE1EB9B32C5811A80071CF37 /* SceneDelegate.swift */,
-				BE1EB9B52C5811A80071CF37 /* ViewController.swift */,
-				BE1EB9BA2C5811AA0071CF37 /* Assets.xcassets */,
-				BE1EB9BC2C5811AA0071CF37 /* LaunchScreen.storyboard */,
-				BE1EB9BF2C5811AA0071CF37 /* Info.plist */,
+				BE07D6CD2C5AB3CF00F685D1 /* AppConfig */,
+				BE07D6CE2C5AB3E300F685D1 /* Source */,
 			);
 			path = CocoaNews;
 			sourceTree = "<group>";
@@ -351,7 +375,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CocoaNews/Info.plist;
+				INFOPLIST_FILE = CocoaNews/AppConfig/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -380,7 +404,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CocoaNews/Info.plist;
+				INFOPLIST_FILE = CocoaNews/AppConfig/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
