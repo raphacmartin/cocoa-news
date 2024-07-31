@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private var task: URLSessionTask?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,18 @@ class ViewController: UIViewController {
         ])
         
         view.backgroundColor = .white
+        
+        let endpoint = HeadlinesEndpoint()
+        endpoint.category = .general
+        
+        task = NewsAPIClient().request(from: endpoint) { result in
+            switch result {
+            case .success(let data):
+                print("Response: \(data)")
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
 }
 
