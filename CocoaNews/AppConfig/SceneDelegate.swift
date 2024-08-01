@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         self.window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController(rootViewController: ViewController())
+        let navigationController = UINavigationController(rootViewController: buildHomeViewController())
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
@@ -49,5 +49,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+}
+
+// MARK: - Views creation
+extension SceneDelegate {
+    private func buildHomeViewController() -> UIViewController {
+        let client = NewsAPIClient()
+        let headlinesService = HeadlinesService(apiClient: client)
+        let viewModel = HomePageViewModel(service: headlinesService)
+        
+        return HomePageViewController(viewModel: viewModel)
+    }
 }
 
