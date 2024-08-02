@@ -3,8 +3,6 @@ import UIKit
 final class NewsListViewController: UIViewController {
     // MARK: Private properties
     var articles = [Article]()
-    let pageHorizontalPadding: CGFloat = 8
-    let pageVerticalPadding: CGFloat = 20
     
     // MARK: UI Components
     let mainStackView: UIStackView = {
@@ -38,8 +36,8 @@ final class NewsListViewController: UIViewController {
             heightDimension: NSCollectionLayoutDimension.estimated(150)
         )
         let item = NSCollectionLayoutItem(layoutSize: size)
-        item.contentInsets.leading = 8
-        item.contentInsets.trailing = 8
+        item.contentInsets.leading = StyleGuide.pageVerticalPadding
+        item.contentInsets.trailing = StyleGuide.pageVerticalPadding
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, repeatingSubitem: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -81,8 +79,8 @@ extension NewsListViewController: ViewCodeBuildable {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: pageVerticalPadding),
-            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: pageVerticalPadding),
+            mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: StyleGuide.pageVerticalPadding),
+            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: StyleGuide.pageVerticalPadding),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
@@ -90,8 +88,8 @@ extension NewsListViewController: ViewCodeBuildable {
             
             titleLabel.topAnchor.constraint(equalTo: titleContainerView.topAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: titleContainerView.bottomAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: titleContainerView.leadingAnchor, constant: pageHorizontalPadding),
-            titleLabel.trailingAnchor.constraint(equalTo: titleContainerView.trailingAnchor, constant: -pageHorizontalPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: titleContainerView.leadingAnchor, constant: StyleGuide.pageHorizontalPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: titleContainerView.trailingAnchor, constant: -StyleGuide.pageHorizontalPadding),
             
             collectionView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor)
         ])
