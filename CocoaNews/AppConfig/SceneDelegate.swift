@@ -55,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
     private func buildHomeViewController() -> UIViewController {
         let client = NewsAPIClient()
-        let headlinesService = HeadlinesService(apiClient: client)
+        let everythingService = EverythingService(apiClient: client)
         let viewModel = HomePageViewModel(service: headlinesService)
         
         return HomePageViewController(viewModel: viewModel)
