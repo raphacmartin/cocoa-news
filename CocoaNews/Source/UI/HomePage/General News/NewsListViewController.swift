@@ -5,7 +5,7 @@ final class NewsListViewController: UIViewController {
     var articles = [Article]()
     
     // MARK: UI Components
-    let mainStackView: UIStackView = {
+    lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -14,13 +14,13 @@ final class NewsListViewController: UIViewController {
         return stackView
     }()
     
-    let titleContainerView: UIView = {
+    lazy var titleContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Latest News"
         label.font = UIFont(name: "ArialRoundedMTBold", size: 24)
@@ -30,7 +30,7 @@ final class NewsListViewController: UIViewController {
         return label
     }()
     
-    let collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let size = NSCollectionLayoutSize(
             widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
             heightDimension: NSCollectionLayoutDimension.estimated(150)

@@ -6,14 +6,14 @@ class NewsCollectionViewCell: UICollectionViewCell {
     private var imageDownloadTask: Disposable? = nil
     
     // MARK: UI Components
-    let shadowView: UIView = {
+    lazy var shadowView: UIView = {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
-    let mainStackView: UIStackView = {
+    lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -21,7 +21,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         
         return stackView
     }()
-    let imageView: LoadableImageView = {
+    lazy var imageView: LoadableImageView = {
         let imageView = LoadableImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "circle.dashed")
@@ -29,7 +29,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
-    let textStackView: UIStackView = {
+    lazy var textStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -37,7 +37,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         
         return stackView
     }()
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Title Of The Article"
@@ -45,7 +45,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
-    let descriptionLabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a egestas tortor. Proin interdum vestibulum accumsan. Curabitur tristique pellentesque tincidunt. "
