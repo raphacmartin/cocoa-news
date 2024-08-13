@@ -24,7 +24,7 @@ class LoadableImageView: UIImageView {
     private func startAnimation() {
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = NSNumber(value: Double.pi * 2)
-        rotation.duration = 2
+        rotation.duration = StyleGuide.loadingAnimationDuration
         rotation.isCumulative = true
         rotation.repeatCount = Float.greatestFiniteMagnitude
         layer.add(rotation, forKey: "rotationAnimation")

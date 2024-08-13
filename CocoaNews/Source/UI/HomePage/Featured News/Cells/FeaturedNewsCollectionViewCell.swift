@@ -59,10 +59,10 @@ final class FeaturedNewsCollectionViewCell: UICollectionViewCell {
         
         backgroundColor = .white
         layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOpacity = 0.5
+        layer.shadowOpacity = Float(StyleGuide.FeaturedNews.cardShadowOpacity)
         layer.shadowOffset = .zero
-        layer.shadowRadius = 3
-        layer.cornerRadius = 10
+        layer.shadowRadius = StyleGuide.FeaturedNews.cardShadowRadius
+        layer.cornerRadius = StyleGuide.FeaturedNews.cardCornerRadius
         mainStackView.layer.cornerRadius = 10
         mainStackView.layer.masksToBounds = true
     }
@@ -92,7 +92,7 @@ extension FeaturedNewsCollectionViewCell: ViewCodeBuildable {
             mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            imageView.heightAnchor.constraint(equalToConstant: 130)
+            imageView.heightAnchor.constraint(equalToConstant: StyleGuide.FeaturedNews.imageHeight)
         ])
     }
 }

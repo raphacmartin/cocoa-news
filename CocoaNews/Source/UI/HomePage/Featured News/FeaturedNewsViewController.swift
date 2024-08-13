@@ -123,6 +123,6 @@ extension FeaturedNewsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FeaturedNewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 200, height: 200)
+        CGSize(width: StyleGuide.FeaturedNews.cardWidth, height: StyleGuide.FeaturedNews.cardHeight)
     }
 }
