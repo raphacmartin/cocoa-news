@@ -4,7 +4,6 @@ import UIKit
 final class ImageDownloader {
     // MARK: Private properties
     private var cachedImages = [String: UIImage]()
-    private var ongoingTask: URLSessionTask? = nil
     
     // MARK: Singleton
     public static var shared = ImageDownloader()
@@ -16,11 +15,13 @@ final class ImageDownloader {
 extension ImageDownloader {
     public func downloadImage(from url: URL) -> Observable<UIImage> {
         Observable.create { [weak self] observer in
+            var ongoingTask: URLSessionTask? = nil
+            
             if let cachedImage = self?.cachedImages[url.absoluteString] {
                 print("[ImageDownloader] image returned from cache")
                 observer.onNext(cachedImage)
             } else {
-                self?.ongoingTask = URLSession.shared.dataTask(with: url, completionHandler: { data, urlResponse, error in
+                ongoingTask = URLSession.shared.dataTask(with: url, completionHandler: { data, urlResponse, error in
                     guard let data = data, error == nil else {
                         observer.onError(error ?? APIError.systemError("[ImageDownloader] Error downloading image"))
                         return
@@ -36,11 +37,11 @@ extension ImageDownloader {
                     observer.onNext(image)
                 })
                 
-                self?.ongoingTask?.resume()
+                ongoingTask?.resume()
             }
             
             return Disposables.create {
-                self?.ongoingTask?.cancel()
+                ongoingTask?.cancel()
             }
         }
     }
