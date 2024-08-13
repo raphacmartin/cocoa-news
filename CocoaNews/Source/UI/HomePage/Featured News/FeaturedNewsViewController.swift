@@ -5,7 +5,7 @@ final class FeaturedNewsViewController: UIViewController {
     private var articles = [Article]()
     
     // MARK: UI Components
-    private let mainStackView: UIStackView = {
+    private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -14,13 +14,13 @@ final class FeaturedNewsViewController: UIViewController {
         return stackView
     }()
     
-    private let titleContainerView: UIView = {
+    private lazy var titleContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Featured News"
         label.font = UIFont(name: "ArialRoundedMTBold", size: 24)
@@ -30,7 +30,7 @@ final class FeaturedNewsViewController: UIViewController {
         return label
     }()
     
-    private let collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -123,6 +123,6 @@ extension FeaturedNewsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FeaturedNewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 200, height: 200)
+        CGSize(width: StyleGuide.FeaturedNews.cardWidth, height: StyleGuide.FeaturedNews.cardHeight)
     }
 }

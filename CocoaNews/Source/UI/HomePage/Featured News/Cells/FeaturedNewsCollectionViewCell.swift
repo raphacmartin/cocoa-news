@@ -6,14 +6,14 @@ final class FeaturedNewsCollectionViewCell: UICollectionViewCell {
     private var imageDownloadTask: Disposable? = nil
     
     // MARK: UI Components
-    let mainStackView: UIStackView = {
+    lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         
         return stackView
     }()
-    let imageView: LoadableImageView = {
+    lazy var imageView: LoadableImageView = {
         let imageView = LoadableImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "circle.dashed")
@@ -21,7 +21,7 @@ final class FeaturedNewsCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Title Of The Article"
@@ -29,7 +29,7 @@ final class FeaturedNewsCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 2
         return label
     }()
-    let descriptionLabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a egestas tortor. Proin interdum vestibulum accumsan. Curabitur tristique pellentesque tincidunt. "
@@ -59,10 +59,10 @@ final class FeaturedNewsCollectionViewCell: UICollectionViewCell {
         
         backgroundColor = .white
         layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowOpacity = 0.5
+        layer.shadowOpacity = Float(StyleGuide.FeaturedNews.cardShadowOpacity)
         layer.shadowOffset = .zero
-        layer.shadowRadius = 3
-        layer.cornerRadius = 10
+        layer.shadowRadius = StyleGuide.FeaturedNews.cardShadowRadius
+        layer.cornerRadius = StyleGuide.FeaturedNews.cardCornerRadius
         mainStackView.layer.cornerRadius = 10
         mainStackView.layer.masksToBounds = true
     }
@@ -92,7 +92,7 @@ extension FeaturedNewsCollectionViewCell: ViewCodeBuildable {
             mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            imageView.heightAnchor.constraint(equalToConstant: 130)
+            imageView.heightAnchor.constraint(equalToConstant: StyleGuide.FeaturedNews.imageHeight)
         ])
     }
 }
