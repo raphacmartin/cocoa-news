@@ -56,9 +56,13 @@ extension SceneDelegate {
     private func buildHomeViewController() -> UIViewController {
         let client = NewsAPIClient()
         let everythingService = EverythingService(apiClient: client)
-        let viewModel = HomePageViewModel(service: headlinesService)
+        let viewModel = HomePageViewModel(service: everythingService)
+        let layoutProvider = HomePageLayoutProvider(shouldUseSwiftUI: true)
         
-        return HomePageViewController(viewModel: viewModel)
+        return HomePageViewController(
+            viewModel: viewModel,
+            layoutProvider: layoutProvider
+        )
     }
 }
 

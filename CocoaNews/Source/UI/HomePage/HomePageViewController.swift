@@ -5,13 +5,15 @@ import UIKit
 final class HomePageViewController: UIViewController {
     // MARK: Private properties
     let viewModel: HomePageViewModel
+    let layoutProvider: HomePageLayoutProvider
     let loadFeaturedNews = PublishRelay<Void>()
     let loadLatestNews = PublishRelay<Void>()
     let disposeBag = DisposeBag()
     
     // MARK: Initializer
-    init(viewModel: HomePageViewModel) {
+    init(viewModel: HomePageViewModel, layoutProvider: HomePageLayoutProvider) {
         self.viewModel = viewModel
+        self.layoutProvider = layoutProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -20,7 +22,7 @@ final class HomePageViewController: UIViewController {
     }
     
     // MARK: UI Components
-    let mainStackView: UIStackView = {
+    lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         
@@ -28,13 +30,13 @@ final class HomePageViewController: UIViewController {
         
         return stackView
     }()
-    let headerView: UIView = {
+    lazy var headerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityLabel = "Header View"
         return view
     }()
-    let headerTitleLabel: UILabel = {
+    lazy var headerTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "CocoaNews"
@@ -43,7 +45,7 @@ final class HomePageViewController: UIViewController {
         
         return label
     }()
-    let contentStackView: UIStackView = {
+    lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
         
         stackView.axis = .vertical
@@ -55,12 +57,12 @@ final class HomePageViewController: UIViewController {
         
         return stackView
     }()
-    let featuredNewsViewController: FeaturedNewsViewController = {
-        let viewController = FeaturedNewsViewController()
+    lazy var featuredNewsViewController: FeaturedNewsViewController = {
+        let viewController = layoutProvider.getFeaturedNewsViewController()
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         return viewController
     }()
-    let generalNewsViewController: NewsListViewController = {
+    lazy var generalNewsViewController: NewsListViewController = {
         let viewController = NewsListViewController()
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         return viewController
