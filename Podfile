@@ -3,4 +3,5 @@ target 'CocoaNews' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxSwiftExt/Core'  
+  pod 'RxCombine'
 end
