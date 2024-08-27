@@ -1,11 +1,11 @@
 import UIKit
 
-final class NewsListViewController: UIViewController {
+final class FeaturedNewsViewControllerUIKit: UIViewController {
     // MARK: Private properties
-    var articles = [Article]()
+    private var articles = [Article]()
     
     // MARK: UI Components
-    lazy var mainStackView: UIStackView = {
+    private lazy var mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -14,15 +14,15 @@ final class NewsListViewController: UIViewController {
         return stackView
     }()
     
-    lazy var titleContainerView: UIView = {
+    private lazy var titleContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Latest News"
+        label.text = "Featured News"
         label.font = UIFont(name: "ArialRoundedMTBold", size: 24)
         label.textColor = UIColor(named: "SecondaryColor")
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,19 +30,11 @@ final class NewsListViewController: UIViewController {
         return label
     }()
     
-    lazy var collectionView: UICollectionView = {
-        let size = NSCollectionLayoutSize(
-            widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
-            heightDimension: NSCollectionLayoutDimension.estimated(150)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: size)
-        item.contentInsets.leading = StyleGuide.pageVerticalPadding
-        item.contentInsets.trailing = StyleGuide.pageVerticalPadding
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, repeatingSubitem: item, count: 1)
-        let section = NSCollectionLayoutSection(group: group)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
         
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -56,8 +48,8 @@ final class NewsListViewController: UIViewController {
     }
 }
 
-// MARK: - Public API
-extension NewsListViewController {
+// MARK: - FeaturedNewsViewController conformance
+extension FeaturedNewsViewControllerUIKit: FeaturedNewsViewController {
     public func set(articles: [Article]) {
         self.articles = articles
         self.collectionView.reloadData()
@@ -65,7 +57,7 @@ extension NewsListViewController {
 }
 
 // MARK: - View code conformance
-extension NewsListViewController: ViewCodeBuildable {
+extension FeaturedNewsViewControllerUIKit: ViewCodeBuildable {
     func setupHierarchy() {
         [
             titleContainerView,
@@ -75,6 +67,9 @@ extension NewsListViewController: ViewCodeBuildable {
         titleContainerView.addSubview(titleLabel)
         
         view.addSubview(mainStackView)
+        
+        collectionView.contentInset.left = StyleGuide.pageHorizontalPadding
+        collectionView.contentInset.right = StyleGuide.pageHorizontalPadding
     }
     
     func setupConstraints() {
@@ -94,27 +89,26 @@ extension NewsListViewController: ViewCodeBuildable {
             collectionView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor)
         ])
     }
-    
-    
 }
 
 // MARK: - Private methods
-extension NewsListViewController {
+extension FeaturedNewsViewControllerUIKit {
     private func setupCollectionView() {
-        collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "reuseId")
+        collectionView.register(FeaturedNewsCollectionViewCell.self, forCellWithReuseIdentifier: "reuseId")
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
 }
 
 // MARK: - UICollectionViewDataSource
-extension NewsListViewController: UICollectionViewDataSource {
+extension FeaturedNewsViewControllerUIKit: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         articles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseId", for: indexPath) as? NewsCollectionViewCell else {
-            fatalError("Couldn't cast cell to `NewsCollectionViewCell`")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseId", for: indexPath) as? FeaturedNewsCollectionViewCell else {
+            fatalError("Couldn't cast cell to `FeaturedNewsCollectionViewCell`")
         }
         
         let article = articles[indexPath.row]
@@ -122,8 +116,13 @@ extension NewsListViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
+    
 }
 
-extension NewsListViewController  {
-    
+// MARK: - UICollectionViewDelegateFlowLayout
+extension FeaturedNewsViewControllerUIKit: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: StyleGuide.FeaturedNews.cardWidth, height: StyleGuide.FeaturedNews.cardHeight)
+    }
 }
