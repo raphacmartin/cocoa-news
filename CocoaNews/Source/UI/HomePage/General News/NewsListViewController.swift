@@ -24,7 +24,7 @@ final class NewsListViewController: UIViewController {
         let label = UILabel()
         label.text = "Latest News"
         label.font = UIFont(name: "ArialRoundedMTBold", size: 24)
-        label.textColor = UIColor(named: "SecondaryColor")
+        label.textColor = UIColor.secondary
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label

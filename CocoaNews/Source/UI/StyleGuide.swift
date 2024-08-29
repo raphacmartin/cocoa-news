@@ -8,6 +8,8 @@ enum StyleGuide {
     
     static let loadingAnimationDuration = 2.0
     
+    static let contentViewRadius = 35.0
+    
     enum FeaturedNews {
         static let cardWidth: CGFloat = 200
         static let cardHeight: CGFloat = 200

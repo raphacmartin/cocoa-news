@@ -7,6 +7,7 @@ struct FeaturedNewsView: View {
         VStack (alignment: .leading, spacing: 0) {
             Text("Featured News (SwiftUI)")
                 .font(.custom("ArialRoundedMTBold", size: 24))
+                .foregroundColor(.secondary)
                 .padding(.horizontal, StyleGuide.pageHorizontalPadding)
             
             ScrollView(.horizontal) {

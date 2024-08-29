@@ -30,17 +30,36 @@ final class HomePageViewController: UIViewController {
         
         return stackView
     }()
-    lazy var headerView: UIView = {
-        let view = UIView()
+    lazy var headerView: HeaderView = {
+        let view = HeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.accessibilityLabel = "Header View"
         return view
+    }()
+    lazy var headerContentView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.accessibilityLabel = "Header Content View"
+        view.axis = .horizontal
+        view.alignment = .center
+        view.spacing = 18
+        return view
+    }()
+    lazy var headerLogoImageView: UIImageView = {
+        let image = UIImage(named: "logo")?.withRenderingMode(.alwaysTemplate)
+        
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        
+        return imageView
     }()
     lazy var headerTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "CocoaNews"
-        label.font = UIFont(name: "ArialRoundedMTBold", size: 60)
+        label.font = UIFont(name: "ArialRoundedMTBold", size: 45)
         label.textColor = .white
         
         return label
@@ -52,7 +71,7 @@ final class HomePageViewController: UIViewController {
         stackView.spacing = 24
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.backgroundColor = .white
-        stackView.layer.cornerRadius = 35
+        stackView.layer.cornerRadius = StyleGuide.contentViewRadius
         stackView.accessibilityLabel = "Content Stack View"
         
         return stackView
@@ -83,21 +102,23 @@ final class HomePageViewController: UIViewController {
 extension HomePageViewController: ViewCodeBuildable {
     func setupHierarchy() {
         // Setting up the header
-        headerView.addSubview(headerTitleLabel)
+        headerContentView.addArrangedSubviews([
+            headerLogoImageView,
+            headerTitleLabel
+        ])
+        headerView.addSubview(headerContentView)
         
         // Setting up the content
-        [
+        contentStackView.addArrangedSubviews([
             featuredNewsViewController.view,
             generalNewsViewController.view
-        ].forEach {
-            contentStackView.addArrangedSubview($0)
-        }
+        ])
         
         // Adding the header and the content to the main stack view
-        [
+        mainStackView.addArrangedSubviews([
             headerView,
             contentStackView
-        ].forEach { mainStackView.addArrangedSubview($0) }
+        ])
         
         // Adding the main stack view to the ViewController's view
         view.addSubview(mainStackView)
@@ -120,14 +141,14 @@ extension HomePageViewController: ViewCodeBuildable {
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
             headerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/4),
-            headerTitleLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            headerTitleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            headerContentView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            headerContentView.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            headerLogoImageView.widthAnchor.constraint(equalToConstant: 80),
+            headerLogoImageView.heightAnchor.constraint(equalToConstant: 80),
 
             featuredNewsViewController.view.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
-    
-    
 }
 
 // MARK: - Private methods

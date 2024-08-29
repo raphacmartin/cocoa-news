@@ -21,6 +21,9 @@
 		BE1EB9B42C5811A80071CF37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1EB9B32C5811A80071CF37 /* SceneDelegate.swift */; };
 		BE1EB9BB2C5811AA0071CF37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE1EB9BA2C5811AA0071CF37 /* Assets.xcassets */; };
 		BE1EB9BE2C5811AA0071CF37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE1EB9BC2C5811AA0071CF37 /* LaunchScreen.storyboard */; };
+		BE2187B42C7E632100FCD384 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B32C7E632100FCD384 /* Color.swift */; };
+		BE2187B62C7E673800FCD384 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B52C7E673800FCD384 /* HeaderView.swift */; };
+		BE2187B82C7E6C1300FCD384 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B72C7E6C1300FCD384 /* UIStackView.swift */; };
 		BE544F552C5D479B00C29949 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE544F542C5D479B00C29949 /* StyleGuide.swift */; };
 		BE544F592C5D707200C29949 /* FeaturedNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE544F582C5D707200C29949 /* FeaturedNewsView.swift */; };
 		BE544F5B2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE544F5A2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift */; };
@@ -64,6 +67,9 @@
 		BE1EB9BA2C5811AA0071CF37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE1EB9BD2C5811AA0071CF37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE1EB9BF2C5811AA0071CF37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE2187B32C7E632100FCD384 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		BE2187B52C7E673800FCD384 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		BE2187B72C7E6C1300FCD384 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		BE544F542C5D479B00C29949 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		BE544F582C5D707200C29949 /* FeaturedNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedNewsView.swift; sourceTree = "<group>"; };
 		BE544F5A2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedNewsViewControllerSwiftUI.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 		BE07D6CE2C5AB3E300F685D1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				BE2187B22C7E631100FCD384 /* Extensions */,
 				BE07D6E02C5ABD0F00F685D1 /* Model */,
 				BE07D6D02C5AB72E00F685D1 /* Network */,
 				BE07D6CF2C5AB40A00F685D1 /* UI */,
@@ -230,6 +237,15 @@
 			path = CocoaNews;
 			sourceTree = "<group>";
 		};
+		BE2187B22C7E631100FCD384 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BE2187B32C7E632100FCD384 /* Color.swift */,
+				BE2187B72C7E6C1300FCD384 /* UIStackView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		BE544F562C5D6FEA00C29949 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +282,7 @@
 				BE544F5E2C5D743400C29949 /* HomePageLayoutProvider.swift */,
 				BECAC5C92C5BCC0700A4FA6F /* Featured News */,
 				BECAC5CA2C5BCC1A00A4FA6F /* General News */,
+				BE2187B52C7E673800FCD384 /* HeaderView.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -447,8 +464,11 @@
 				BE07D6E42C5ABD5E00F685D1 /* ArticleSource.swift in Sources */,
 				BE544F552C5D479B00C29949 /* StyleGuide.swift in Sources */,
 				BE544F5D2C5D71D500C29949 /* FeaturedNewsViewController.swift in Sources */,
+				BE2187B82C7E6C1300FCD384 /* UIStackView.swift in Sources */,
 				BE1EB9B22C5811A80071CF37 /* AppDelegate.swift in Sources */,
+				BE2187B62C7E673800FCD384 /* HeaderView.swift in Sources */,
 				BE1EB9B42C5811A80071CF37 /* SceneDelegate.swift in Sources */,
+				BE2187B42C7E632100FCD384 /* Color.swift in Sources */,
 				BECAC5C62C5BCBBB00A4FA6F /* HomePageViewController.swift in Sources */,
 				BE07D6D22C5AB76800F685D1 /* APIClient.swift in Sources */,
 				BE544F592C5D707200C29949 /* FeaturedNewsView.swift in Sources */,
@@ -603,8 +623,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CocoaNews/AppConfig/Info.plist;
@@ -620,6 +641,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.raphael.CocoaNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -632,8 +654,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CocoaNews/AppConfig/Info.plist;
@@ -649,6 +672,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.raphael.CocoaNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
