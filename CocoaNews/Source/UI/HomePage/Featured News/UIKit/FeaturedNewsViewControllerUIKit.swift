@@ -24,7 +24,7 @@ final class FeaturedNewsViewControllerUIKit: UIViewController {
         let label = UILabel()
         label.text = "Featured News"
         label.font = UIFont(name: "ArialRoundedMTBold", size: 24)
-        label.textColor = UIColor(named: "SecondaryColor")
+        label.textColor = UIColor.secondary
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
