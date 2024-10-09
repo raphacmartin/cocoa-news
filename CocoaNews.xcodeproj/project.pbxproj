@@ -80,9 +80,9 @@
 		BE544F5E2C5D743400C29949 /* HomePageLayoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageLayoutProvider.swift; sourceTree = "<group>"; };
 		BE544F602C5D787A00C29949 /* FeaturedNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedNewsViewModel.swift; sourceTree = "<group>"; };
 		BE544F632C5D7AE000C29949 /* FeaturedNewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedNewsItem.swift; sourceTree = "<group>"; };
-		BE7988782CA5EBDB005EE8CB /* splash_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash_background.png; path = ../../../../Downloads/splash_background.png; sourceTree = "<group>"; };
+		BE7988782CA5EBDB005EE8CB /* splash_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_background.png; sourceTree = "<group>"; };
 		BE79887B2CA5EC46005EE8CB /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
-		BE79887D2CA5ED45005EE8CB /* splash_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = splash_video.mp4; path = ../../../../Downloads/splash_video.mp4; sourceTree = "<group>"; };
+		BE79887D2CA5ED45005EE8CB /* splash_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash_video.mp4; sourceTree = "<group>"; };
 		BECAC5BE2C5BCB0C00A4FA6F /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		BECAC5C02C5BCB3100A4FA6F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		BECAC5C32C5BCB6C00A4FA6F /* HeadlinesService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeadlinesService+Rx.swift"; sourceTree = "<group>"; };
