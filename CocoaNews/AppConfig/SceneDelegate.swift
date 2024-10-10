@@ -7,6 +7,7 @@
 
 import RxSwift
 import UIKit
+import UnleashProxyClientSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: Public properties
@@ -34,8 +35,10 @@ extension SceneDelegate {
     
     private func subscribeToLoadingFinish(with viewController: SplashScreenViewController) {
         viewController.didFinishLoading
-            .subscribe(onNext: { _ in
-                self.window?.rootViewController = self.buildHomeViewController()
+            .subscribe(onNext: { configuration in
+                let shouldUseSwiftUI = configuration.retrieve(from: .useSwiftUI)
+                
+                self.window?.rootViewController = self.buildHomeViewController(shouldUseSwiftUI: shouldUseSwiftUI)
             })
             .disposed(by: disposeBag)
     }
@@ -43,11 +46,11 @@ extension SceneDelegate {
 
 // MARK: - Views creation
 extension SceneDelegate {
-    private func buildHomeViewController() -> UIViewController {
+    private func buildHomeViewController(shouldUseSwiftUI: Bool) -> UIViewController {
         let client = NewsAPIClient()
         let everythingService = EverythingService(apiClient: client)
         let viewModel = HomePageViewModel(service: everythingService)
-        let layoutProvider = HomePageLayoutProvider(shouldUseSwiftUI: true)
+        let layoutProvider = HomePageLayoutProvider(shouldUseSwiftUI: shouldUseSwiftUI)
         
         return HomePageViewController(
             viewModel: viewModel,
