@@ -10,12 +10,16 @@ PODS:
   - RxSwift (6.7.1)
   - RxSwiftExt/Core (6.2.1):
     - RxSwift (~> 6.0)
+  - SwiftEventBus (5.0.0)
+  - UnleashProxyClientSwift (1.3.0):
+    - SwiftEventBus
 
 DEPENDENCIES:
   - RxCocoa
   - RxCombine
   - RxSwift
   - RxSwiftExt/Core
+  - UnleashProxyClientSwift (from `https://github.com/Unleash/unleash-proxy-client-swift.git`, tag `1.3.0`)
 
 SPEC REPOS:
   trunk:
@@ -24,6 +28,17 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxSwiftExt
+    - SwiftEventBus
+
+EXTERNAL SOURCES:
+  UnleashProxyClientSwift:
+    :git: https://github.com/Unleash/unleash-proxy-client-swift.git
+    :tag: 1.3.0
+
+CHECKOUT OPTIONS:
+  UnleashProxyClientSwift:
+    :git: https://github.com/Unleash/unleash-proxy-client-swift.git
+    :tag: 1.3.0
 
 SPEC CHECKSUMS:
   RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
@@ -31,7 +46,9 @@ SPEC CHECKSUMS:
   RxRelay: 4151ba01152436b08271e08410135e099880eae5
   RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
   RxSwiftExt: 43aaacb6a4d3c69c55e9d1cf4f79920043d13583
+  SwiftEventBus: b30f617a6aca5a9336464b4d3f5931034762f2d5
+  UnleashProxyClientSwift: 6c9c6bd1569c32da0d618200e9554f3554d4345a
 
-PODFILE CHECKSUM: 6513253499a6380652dd46e4fd95b2804a06ee04
+PODFILE CHECKSUM: 59dc1e4da62c998e827d0260cc9e9cc670fda20c
 
 COCOAPODS: 1.15.2

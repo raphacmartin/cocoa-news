@@ -24,6 +24,8 @@
 		BE2187B42C7E632100FCD384 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B32C7E632100FCD384 /* Color.swift */; };
 		BE2187B62C7E673800FCD384 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B52C7E673800FCD384 /* HeaderView.swift */; };
 		BE2187B82C7E6C1300FCD384 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B72C7E6C1300FCD384 /* UIStackView.swift */; };
+		BE468AF02CB71D3A00578C2E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE468AEF2CB71D3A00578C2E /* Configuration.swift */; };
+		BE468AF32CB71DE500578C2E /* UnleashConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE468AF22CB71DE500578C2E /* UnleashConfiguration.swift */; };
 		BE544F552C5D479B00C29949 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE544F542C5D479B00C29949 /* StyleGuide.swift */; };
 		BE544F592C5D707200C29949 /* FeaturedNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE544F582C5D707200C29949 /* FeaturedNewsView.swift */; };
 		BE544F5B2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE544F5A2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift */; };
@@ -73,6 +75,8 @@
 		BE2187B32C7E632100FCD384 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BE2187B52C7E673800FCD384 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		BE2187B72C7E6C1300FCD384 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		BE468AEF2CB71D3A00578C2E /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		BE468AF22CB71DE500578C2E /* UnleashConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnleashConfiguration.swift; sourceTree = "<group>"; };
 		BE544F542C5D479B00C29949 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		BE544F582C5D707200C29949 /* FeaturedNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedNewsView.swift; sourceTree = "<group>"; };
 		BE544F5A2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedNewsViewControllerSwiftUI.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				BE2187B22C7E631100FCD384 /* Extensions */,
 				BE07D6E02C5ABD0F00F685D1 /* Model */,
 				BE07D6D02C5AB72E00F685D1 /* Network */,
+				BE468AEE2CB71CCF00578C2E /* Configuration */,
 				BE07D6CF2C5AB40A00F685D1 /* UI */,
 			);
 			path = Source;
@@ -253,6 +258,23 @@
 				BE2187B72C7E6C1300FCD384 /* UIStackView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BE468AEE2CB71CCF00578C2E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				BE468AF12CB71DD100578C2E /* Unleash */,
+				BE468AEF2CB71D3A00578C2E /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		BE468AF12CB71DD100578C2E /* Unleash */ = {
+			isa = PBXGroup;
+			children = (
+				BE468AF22CB71DE500578C2E /* UnleashConfiguration.swift */,
+			);
+			path = Unleash;
 			sourceTree = "<group>";
 		};
 		BE544F562C5D6FEA00C29949 /* UIKit */ = {
@@ -486,6 +508,7 @@
 				BE2187B82C7E6C1300FCD384 /* UIStackView.swift in Sources */,
 				BE1EB9B22C5811A80071CF37 /* AppDelegate.swift in Sources */,
 				BE2187B62C7E673800FCD384 /* HeaderView.swift in Sources */,
+				BE468AF02CB71D3A00578C2E /* Configuration.swift in Sources */,
 				BE1EB9B42C5811A80071CF37 /* SceneDelegate.swift in Sources */,
 				BE2187B42C7E632100FCD384 /* Color.swift in Sources */,
 				BECAC5C62C5BCBBB00A4FA6F /* HomePageViewController.swift in Sources */,
@@ -500,6 +523,7 @@
 				BE07D6D42C5AB78A00F685D1 /* Endpoint.swift in Sources */,
 				BECAC5CD2C5BCC6600A4FA6F /* ImageDownloader.swift in Sources */,
 				BE07D6E62C5ABD8400F685D1 /* NewsAPIResponse.swift in Sources */,
+				BE468AF32CB71DE500578C2E /* UnleashConfiguration.swift in Sources */,
 				BE544F642C5D7AE000C29949 /* FeaturedNewsItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

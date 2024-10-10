@@ -60,6 +60,16 @@
             value = "https://newsapi.org/v2/"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "UNLEASH_URL"
+            value = "http://localhost:4242/api/frontend/"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "UNLEASH_CLIENT_KEY"
+            value = "default:development.unleash-insecure-frontend-api-token"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction

@@ -5,12 +5,17 @@ import UIKit
 
 final class SplashScreenViewController: UIViewController {
     // MARK: Public properties
-    public var didFinishLoading: Observable<Void> {
-        didFinishLoadingRelay.asObservable()
+    public var didFinishLoading: Observable<Configuration> {
+        Observable.combineLatest(
+            didFinishLoadingRelay.asObservable(),
+            configuration.isReady
+        )
+        .map { _ in self.configuration }
     }
     
     // MARK: Private properties
     private var didFinishLoadingRelay = PublishRelay<Void>()
+    private var configuration: Configuration = UnleashConfiguration()
     
     // MARK: UI Components
     private lazy var backgroundImageView: UIImageView = {
