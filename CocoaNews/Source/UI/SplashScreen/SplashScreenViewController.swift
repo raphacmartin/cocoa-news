@@ -5,17 +5,12 @@ import UIKit
 
 final class SplashScreenViewController: UIViewController {
     // MARK: Public properties
-    public var didFinishLoading: Observable<Configuration> {
-        Observable.combineLatest(
-            didFinishLoadingRelay.asObservable(),
-            configuration.isReady
-        )
-        .map { _ in self.configuration }
+    public var videoDidFinish: Observable<Void> {
+        didFinishRelay.asObservable()
     }
     
     // MARK: Private properties
-    private var didFinishLoadingRelay = PublishRelay<Void>()
-    private var configuration: Configuration = UnleashConfiguration()
+    private var didFinishRelay = PublishRelay<Void>()
     
     // MARK: UI Components
     private lazy var backgroundImageView: UIImageView = {
@@ -71,6 +66,6 @@ extension SplashScreenViewController {
     }
     
     @objc private func playerDidFinishPlaying(note: NSNotification) {
-        didFinishLoadingRelay.accept(())
+        didFinishRelay.accept(())
     }
 }

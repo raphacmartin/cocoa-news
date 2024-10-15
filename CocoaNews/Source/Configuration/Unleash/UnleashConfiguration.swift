@@ -9,7 +9,7 @@ final class UnleashConfiguration {
     }
     
     // MARK: Private properties
-    private let isReadyRelay = PublishRelay<Void>()
+    private let isReadyRelay = PublishSubject<Void>()
     private let unleashClient: UnleashClient
     
     // MARK: Initializer
@@ -22,15 +22,17 @@ final class UnleashConfiguration {
             clientKey: clientKey
         )
         
-        unleashClient.start()
+        unleashClient.start() { [weak self] pollerError in
+            guard let pollerError = pollerError, let self = self else { return }
+            
+            self.isReadyRelay.onError(pollerError)
+        }
         
         unleashClient.subscribe(name: "ready") { [weak self] in
             guard let self = self else { return }
             
-            self.isReadyRelay.accept(())
+            self.isReadyRelay.onNext(())
         }
-        
-        // FIXME: implement error handling: https://github.com/raphacmartin/cocoa-news/issues/14
     }
 }
 
