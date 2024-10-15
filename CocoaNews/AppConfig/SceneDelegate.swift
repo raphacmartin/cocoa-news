@@ -33,14 +33,19 @@ extension SceneDelegate {
         subscribeToLoadingFinish(with: splashVC)
     }
     
-    private func subscribeToLoadingFinish(with viewController: SplashScreenViewController) {
-        viewController.didFinishLoading
-            .subscribe(onNext: { configuration in
-                let shouldUseSwiftUI = configuration.retrieve(from: .useSwiftUI)
-                
-                self.window?.rootViewController = self.buildHomeViewController(shouldUseSwiftUI: shouldUseSwiftUI)
-            })
-            .disposed(by: disposeBag)
+    private func subscribeToLoadingFinish(with splashViewController: SplashScreenViewController) {
+        // Wait for both splash video and configuration loading finish to go to the first page
+        Observable.combineLatest(
+            splashViewController.videoDidFinish,
+            ConfigurationManager.start().asObservable()
+        )
+        .map { $0.1 }
+        .subscribe(onNext: { configuration in
+            let shouldUseSwiftUI = configuration.retrieve(from: .useSwiftUI)
+            
+            self.window?.rootViewController = self.buildHomeViewController(shouldUseSwiftUI: shouldUseSwiftUI)
+        })
+        .disposed(by: disposeBag)
     }
 }
 
