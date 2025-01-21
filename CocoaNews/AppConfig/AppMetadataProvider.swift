@@ -2,12 +2,6 @@ import Foundation
 
 protocol AppMetadataProvider {
     var bundleVersion: Int { get }
-    
-    static var `default`: AppMetadataProvider { get }
-}
-
-extension AppMetadataProvider {
-    static var `default`: AppMetadataProvider { DefaultAppMetadata() }
 }
 
 final class DefaultAppMetadata: AppMetadataProvider {
