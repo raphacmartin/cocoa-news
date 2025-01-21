@@ -28,14 +28,6 @@ extension SessionManager {
         
         return rules.allSatisfy(\.self)
     }
-    
-    func getUserData() -> Session.UserData? {
-        session?.userData
-    }
-    
-    func setUserData(key: UserDataKey, value: Any) {
-        session?.userData[key] = value
-    }
 }
 
 // MARK: - Validation Rules
@@ -50,7 +42,7 @@ extension Session {
     }
     
     func hasFavorites() -> Bool {
-        guard let favorites = userData[.favoriteCategories] as? [String] else { return false }
+        guard let favorites = userData.read(from: .favoriteCategories, as: [FavoriteCategory].self) else { return false }
         return !favorites.isEmpty
     }
 }

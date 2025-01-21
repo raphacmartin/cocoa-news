@@ -4,14 +4,19 @@ import Foundation
 @testable import CocoaNews
 
 struct SessionTest {
-    static let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
+    var validSession: Session
     
-    var validSession = Session(
-        sessionStartedAtBuild: 1,
-        sessionExp: nextYear,
-        userData: [
-            .favoriteCategories: [FavoriteCategory(id: "business", description: "Business")]
-        ])
+    init() {
+        let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
+        
+        let userData = UserData()
+        try? userData.set(key: .favoriteCategories, value: [FavoriteCategory(id: "business", description: "Business")])
+        
+        self.validSession = Session(
+           sessionStartedAtBuild: 1,
+           sessionExp: nextYear,
+           userData: userData)
+    }
     
     @Test func validSessionIsValid() {
         let sessionManager = SessionManager(session: validSession, appMetadata: MockAppMetadataProvider())
@@ -43,9 +48,9 @@ struct SessionTest {
         #expect(sessionManager.isSessionValid() == false)
     }
     
-    @Test func sessionWithNoFavoriteCategoriesIsInvalid() {
-        var session = validSession
-        session.userData[.favoriteCategories] = nil
+    @Test func sessionWithNoFavoriteCategoriesIsInvalid() throws {
+        let session = validSession
+        try session.userData.set(key: .favoriteCategories, value: nil)
         
         let sessionManager = SessionManager(session: session, appMetadata: MockAppMetadataProvider())
         
