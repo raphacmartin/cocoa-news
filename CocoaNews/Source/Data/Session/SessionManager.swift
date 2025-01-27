@@ -4,19 +4,35 @@ final class SessionManager {
     // MARK: - Singleton
     static let shared = SessionManager()
     
+    // MARK: - Constants
+    private let thirtyDays: TimeInterval = 60 * 60 * 24 * 30
+    private let storage: SessionStorage = .default
+    
     // MARK: - Private Properties
-    private var session: Session?
+    private var session: Session? = nil
     private var appMetadata: AppMetadataProvider
     
     // MARK: - Initializer
     init(session: Session? = nil, appMetadata: AppMetadataProvider = DefaultAppMetadata()) {
-        self.session = session
+        self.session = session ?? storage.load()
         self.appMetadata = appMetadata
     }
 }
 
 // MARK: - Public API
 extension SessionManager {
+    func startSession() {
+        let session = Session(
+            sessionStartedAtBuild: appMetadata.bundleVersion,
+            sessionExp: Date().addingTimeInterval(thirtyDays),
+            userData: UserData()
+        )
+        
+        self.session = session
+        
+        storage.save(session: session)
+    }
+    
     func isSessionValid() -> Bool {
         guard let session else { return false }
         

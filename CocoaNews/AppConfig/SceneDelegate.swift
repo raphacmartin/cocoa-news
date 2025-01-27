@@ -15,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     // MARK: Private properties
     private var disposeBag = DisposeBag()
+    private var sessionManager = SessionManager()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(with: scene)
@@ -33,6 +34,15 @@ extension SceneDelegate {
         subscribeToLoadingFinish(with: splashVC)
     }
     
+    private func initialViewController(withSwiftUI: Bool) -> UIViewController {
+        if sessionManager.isSessionValid() {
+            return buildHomeViewController(shouldUseSwiftUI: withSwiftUI)
+        } else {
+            sessionManager.startSession()
+            return buildOnboardingViewController()
+        }
+    }
+    
     private func subscribeToLoadingFinish(with splashViewController: SplashScreenViewController) {
         // Wait for both splash video and configuration loading finish to go to the first page
         Observable.combineLatest(
@@ -43,7 +53,7 @@ extension SceneDelegate {
         .subscribe(onNext: { configuration in
             let shouldUseSwiftUI = configuration.retrieve(from: .useSwiftUI)
             
-            self.window?.rootViewController = self.buildHomeViewController(shouldUseSwiftUI: shouldUseSwiftUI)
+            self.window?.rootViewController = self.initialViewController(withSwiftUI: shouldUseSwiftUI)
         })
         .disposed(by: disposeBag)
     }
@@ -61,6 +71,10 @@ extension SceneDelegate {
             viewModel: viewModel,
             layoutProvider: layoutProvider
         )
+    }
+    
+    private func buildOnboardingViewController() -> UIViewController {
+        OnboardingHostingController()
     }
 }
 

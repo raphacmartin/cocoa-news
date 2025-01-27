@@ -55,6 +55,8 @@
 		BED21B8A2CBF0BDE00EB7FBC /* ConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED21B892CBF0BDE00EB7FBC /* ConfigurationManager.swift */; };
 		BEDF45B52D4800A600B345D8 /* SelectableGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDF45B42D48009B00B345D8 /* SelectableGroup.swift */; };
 		BEEE8D1B2CD96ED6001AB52D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE8D1A2CD96ED6001AB52D /* Session.swift */; };
+		BEFA2E072D3FDCC100ED7154 /* SessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA2E062D3FDCBD00ED7154 /* SessionStorage.swift */; };
+		BEFA2E0A2D3FDD1000ED7154 /* UserDefaultsSessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA2E092D3FDD0500ED7154 /* UserDefaultsSessionStorage.swift */; };
 		BEFF15C62C6BDB710095FFA5 /* EverythingEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF15C52C6BDB710095FFA5 /* EverythingEndpoint.swift */; };
 		BEFF15C82C6BDC1D0095FFA5 /* EverythingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF15C72C6BDC1D0095FFA5 /* EverythingService.swift */; };
 		BEFF15CC2C6BDDF40095FFA5 /* NewsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF15CB2C6BDDF40095FFA5 /* NewsAPIService.swift */; };
@@ -125,6 +127,8 @@
 		BED21B892CBF0BDE00EB7FBC /* ConfigurationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationManager.swift; sourceTree = "<group>"; };
 		BEDF45B42D48009B00B345D8 /* SelectableGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableGroup.swift; sourceTree = "<group>"; };
 		BEEE8D1A2CD96ED6001AB52D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		BEFA2E062D3FDCBD00ED7154 /* SessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStorage.swift; sourceTree = "<group>"; };
+		BEFA2E092D3FDD0500ED7154 /* UserDefaultsSessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSessionStorage.swift; sourceTree = "<group>"; };
 		BEFF15C52C6BDB710095FFA5 /* EverythingEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverythingEndpoint.swift; sourceTree = "<group>"; };
 		BEFF15C72C6BDC1D0095FFA5 /* EverythingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverythingService.swift; sourceTree = "<group>"; };
 		BEFF15CB2C6BDDF40095FFA5 /* NewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIService.swift; sourceTree = "<group>"; };
@@ -366,7 +370,9 @@
 			isa = PBXGroup;
 			children = (
 				BEB78FB32D3195CF00533036 /* Model */,
+				BEFA2E082D3FDCF000ED7154 /* UserDefaultsSessionStorage */,
 				BEB78FFC2D31997C00533036 /* SessionManager.swift */,
+				BEFA2E062D3FDCBD00ED7154 /* SessionStorage.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -464,6 +470,14 @@
 				BEB78FB22D3195BE00533036 /* Session */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		BEFA2E082D3FDCF000ED7154 /* UserDefaultsSessionStorage */ = {
+			isa = PBXGroup;
+			children = (
+				BEFA2E092D3FDD0500ED7154 /* UserDefaultsSessionStorage.swift */,
+			);
+			path = UserDefaultsSessionStorage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,6 +664,7 @@
 				BE2187B82C7E6C1300FCD384 /* UIStackView.swift in Sources */,
 				BE1EB9B22C5811A80071CF37 /* AppDelegate.swift in Sources */,
 				BE1DDA4D2D356915009C1194 /* AppMetadataProvider.swift in Sources */,
+				BEFA2E0A2D3FDD1000ED7154 /* UserDefaultsSessionStorage.swift in Sources */,
 				BE2187B62C7E673800FCD384 /* HeaderView.swift in Sources */,
 				BEDF45B52D4800A600B345D8 /* SelectableGroup.swift in Sources */,
 				BE468AF02CB71D3A00578C2E /* Configuration.swift in Sources */,
@@ -660,6 +675,7 @@
 				BE544F592C5D707200C29949 /* FeaturedNewsView.swift in Sources */,
 				BEFF15CC2C6BDDF40095FFA5 /* NewsAPIService.swift in Sources */,
 				BE79887C2CA5EC46005EE8CB /* SplashScreenViewController.swift in Sources */,
+				BEFA2E072D3FDCC100ED7154 /* SessionStorage.swift in Sources */,
 				BECAC5CF2C5BCC9100A4FA6F /* LoadableImageView.swift in Sources */,
 				BECAC5D32C5BCCE900A4FA6F /* FeaturedNewsViewControllerUIKit.swift in Sources */,
 				BECAC5D82C5BCD5000A4FA6F /* NewsListViewController.swift in Sources */,
