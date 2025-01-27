@@ -198,12 +198,9 @@
 		BE07D6CF2C5AB40A00F685D1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				BE79887A2CA5EC14005EE8CB /* SplashScreen */,
-				BECAC5BD2C5BCAE400A4FA6F /* HomePage */,
-				BECAC5C02C5BCB3100A4FA6F /* ViewModel.swift */,
-				BECAC5C72C5BCBF100A4FA6F /* ViewCodeBuildable.swift */,
+				BEDF45B72D4800C800B345D8 /* Components */,
+				BEDF45B62D4800B000B345D8 /* Screens */,
 				BECAC5CC2C5BCC6600A4FA6F /* ImageDownloader.swift */,
-				BECAC5CE2C5BCC9100A4FA6F /* LoadableImageView.swift */,
 				BE544F542C5D479B00C29949 /* StyleGuide.swift */,
 			);
 			path = UI;
