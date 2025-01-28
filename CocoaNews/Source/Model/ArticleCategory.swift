@@ -1,4 +1,4 @@
-enum ArticleCategory: String, CaseIterable {
+enum ArticleCategory: String, CaseIterable, Codable {
     case business
     case entertainment
     case general

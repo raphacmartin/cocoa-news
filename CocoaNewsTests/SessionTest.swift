@@ -10,7 +10,8 @@ struct SessionTest {
         let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
         
         let userData = UserData()
-        try? userData.set(key: .favoriteCategories, value: [FavoriteCategory(id: "business", description: "Business")])
+        let favorites: [ArticleCategory] = [.business]
+        try? userData.set(key: .favoriteCategories, value: favorites)
         
         self.validSession = Session(
            sessionStartedAtBuild: 1,

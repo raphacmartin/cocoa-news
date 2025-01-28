@@ -58,7 +58,7 @@ extension Session {
     }
     
     func hasFavorites() -> Bool {
-        guard let favorites = userData.read(from: .favoriteCategories, as: [FavoriteCategory].self) else { return false }
+        guard let favorites = userData.read(from: .favoriteCategories, as: [ArticleCategory].self) else { return false }
         return !favorites.isEmpty
     }
 }
