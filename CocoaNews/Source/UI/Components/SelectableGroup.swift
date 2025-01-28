@@ -1,51 +1,51 @@
 import SwiftUI
 
-struct SelectableGroup: View {
+struct SelectableGroup<T: DescriptiveItem>: View {
     // MARK: - Private properties
-    private var data: [String]
+    private var data: [T]
     
     // MARK: - State
-    @Binding private var selected: [String]
+    @Binding private var selected: [T]
     
     // MARK: - Initializer
-    init(data: [String], selected: Binding<[String]>) {
+    init(data: [T], selected: Binding<[T]>) {
         self.data = data
         self._selected = selected
     }
     
     var body: some View {
         VStack (spacing: StyleGuide.SelectableItem.spacing) {
-            ForEach(data, id: \.self) { item in
-                SelectableItem(text: item, selectedValues: $selected)
+            ForEach(data) { item in
+                SelectableItem(item: item, selectedValues: $selected)
             }
         }
     }
 }
 
-struct SelectableItem: View {
+struct SelectableItem<T: DescriptiveItem>: View {
     // MARK: - Private properties
-    private var text: String
-    @Binding private var selectedValues: [String]
+    private var item: T
+    @Binding private var selectedValues: [T]
     
     // MARK: - Computed var
     private var isSelected: Bool {
-        selectedValues.contains(text)
+        selectedValues.contains(item)
     }
     
     // MARK: - Initializer
-    init(text: String, selectedValues: Binding<[String]>) {
-        self.text = text
+    init(item: T, selectedValues: Binding<[T]>) {
+        self.item = item
         self._selectedValues = selectedValues
     }
     
     var body: some View {
-        Button(text) {
+        Button(item.description) {
             if isSelected {
-                guard let index = selectedValues.firstIndex(of: text) else { return }
+                guard let index = selectedValues.firstIndex(of: item) else { return }
                 
                 selectedValues.remove(at: index)
             } else {
-                selectedValues.append(text)
+                selectedValues.append(item)
             }
         }
         .foregroundColor(isSelected ? .white : .accent)
@@ -59,16 +59,16 @@ struct SelectableItem: View {
     }
 }
 
+protocol DescriptiveItem: Equatable, Identifiable {
+    var description: String { get }
+}
+
 #Preview {
-    @Previewable @State var selected: [String] = []
+    @Previewable @State var selected: [ArticleCategory] = []
     
     VStack {
-        SelectableGroup(data: [
-            "🧳 Business",
-            "💻 Technology",
-            "🧪 Science"
-        ], selected: $selected)
+        SelectableGroup(data: ArticleCategory.allCases, selected: $selected)
         
-        Text("Selected values: \(selected.joined(separator: ", "))")
+        Text("Selected values: \(selected.map(\.description).joined(separator: ", "))")
     }
 }

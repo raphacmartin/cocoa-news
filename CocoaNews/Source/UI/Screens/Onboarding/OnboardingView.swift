@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    // MARK: - State
-    @State var selectedCategories: [String] = []
+    // MARK: - View Model
+    @ObservedObject var viewModel = OnboardingViewModel()
     
     // MARK: - Computed vars
     var buttonText: String {
-        selectedCategories.count > 0 ? "Save and Continue" : "Select at least one category"
+        viewModel.selectedCategories.count > 0 ? "Save and Continue" : "Select at least one category"
     }
     
     var body: some View {
@@ -39,14 +39,14 @@ struct OnboardingView: View {
                 .foregroundColor(.secondary)
             
             SelectableGroup(
-                data: ArticleCategory.allCases.map(\.description),
-                selected: $selectedCategories)
+                data: ArticleCategory.allCases,
+                selected: $viewModel.selectedCategories)
             .frame(maxHeight: .infinity)
             
             Button(buttonText) {
-                print("click")
+                viewModel.save()
             }
-            .disabled(selectedCategories.count == 0)
+            .disabled(viewModel.selectedCategories.count == 0)
         }
         .ignoresSafeArea()
         .padding(.bottom, 20)
@@ -65,26 +65,5 @@ final class OnboardingHostingController: UIHostingController<OnboardingView> {
     
     @MainActor @preconcurrency required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("🔥")
-    }
-}
-
-extension ArticleCategory {
-    var description: String {
-        switch self {
-        case .business:
-            "🧳 Business"
-        case .entertainment:
-            "🍿 Entertainment"
-        case .general:
-            "⚙️ General"
-        case .health:
-            "🏥 Health"
-        case .science:
-            "🧪 Science"
-        case .sports:
-            "⚽️ Sports"
-        case .technology:
-            "💻 Technology"
-        }
     }
 }
