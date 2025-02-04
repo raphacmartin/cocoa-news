@@ -44,6 +44,16 @@ extension SessionManager {
         
         return rules.allSatisfy(\.self)
     }
+    
+    func setFavoriteCategories(_ categories: [ArticleCategory]) {
+        do {
+            try self.session?.userData.set(key: .favoriteCategories, value: categories)
+            storage.save(session: self.session!)
+        } catch {
+            // FIXME: Add tool to log this kind of error https://github.com/raphacmartin/cocoa-news/issues/23
+            print("Error saving favorite categories: \(error)")
+        }
+    }
 }
 
 // MARK: - Validation Rules
