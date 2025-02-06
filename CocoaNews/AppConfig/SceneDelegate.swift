@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: Private properties
     private var disposeBag = DisposeBag()
     private var sessionManager = SessionManager()
+    private var navigationManager: NavigationManaging = NavigationManager.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(with: scene)
@@ -27,54 +28,31 @@ extension SceneDelegate {
     private func setupWindow(with scene: UIScene) {
         guard let windowScene = scene as? UIWindowScene else { return }
         self.window = UIWindow(windowScene: windowScene)
-        let splashVC = SplashScreenViewController()
-        self.window?.rootViewController = splashVC
-        self.window?.makeKeyAndVisible()
         
-        subscribeToLoadingFinish(with: splashVC)
-    }
-    
-    private func initialViewController(withSwiftUI: Bool) -> UIViewController {
-        if sessionManager.isSessionValid() {
-            return buildHomeViewController(shouldUseSwiftUI: withSwiftUI)
-        } else {
-            sessionManager.startSession()
-            return buildOnboardingViewController()
-        }
-    }
-    
-    private func subscribeToLoadingFinish(with splashViewController: SplashScreenViewController) {
+        guard let window = window else { return }
+        
+        let splashVideoDidFinish = navigationManager.presentSplashScreenUntilFinished(on: window)
+        
         // Wait for both splash video and configuration loading finish to go to the first page
         Observable.combineLatest(
-            splashViewController.videoDidFinish,
+            splashVideoDidFinish,
             ConfigurationManager.start().asObservable()
         )
+        // Discard the value from the splash Observable and use only the configuration
         .map { $0.1 }
-        .subscribe(onNext: { configuration in
-            let shouldUseSwiftUI = configuration.retrieve(from: .useSwiftUI)
-            
-            self.window?.rootViewController = self.initialViewController(withSwiftUI: shouldUseSwiftUI)
-        })
+        .subscribe(onNext: goToInitialPage(basedOn:))
         .disposed(by: disposeBag)
     }
-}
-
-// MARK: - Views creation
-extension SceneDelegate {
-    private func buildHomeViewController(shouldUseSwiftUI: Bool) -> UIViewController {
-        let client = NewsAPIClient()
-        let everythingService = EverythingService(apiClient: client)
-        let viewModel = HomePageViewModel(service: everythingService)
-        let layoutProvider = HomePageLayoutProvider(shouldUseSwiftUI: shouldUseSwiftUI)
-        
-        return HomePageViewController(
-            viewModel: viewModel,
-            layoutProvider: layoutProvider
-        )
-    }
     
-    private func buildOnboardingViewController() -> UIViewController {
-        OnboardingHostingController()
+    private func goToInitialPage(basedOn configuration: Configuration) {
+        navigationManager.viewFactory = ViewFactory(configuration: configuration)
+        
+        if sessionManager.isSessionValid() {
+            navigationManager.setRootPage(.home)
+        } else {
+            sessionManager.startSession()
+            navigationManager.setRootPage(.onboarding)
+        }
     }
 }
 
