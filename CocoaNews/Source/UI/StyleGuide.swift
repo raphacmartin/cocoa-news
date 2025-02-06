@@ -10,6 +10,17 @@ enum StyleGuide {
     
     static let contentViewRadius = 35.0
     
+    enum Onboarding {
+        static let logoSize: CGFloat = 100
+    }
+    
+    enum SelectableItem {
+        static let height: CGFloat = 40
+        static let radius: CGFloat = 20
+        static let padding: CGFloat = 20
+        static let spacing: CGFloat = 16
+    }
+    
     enum FeaturedNews {
         static let cardWidth: CGFloat = 200
         static let cardHeight: CGFloat = 200
