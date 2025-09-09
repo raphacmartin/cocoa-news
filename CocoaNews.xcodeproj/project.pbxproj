@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		BE2187B42C7E632100FCD384 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B32C7E632100FCD384 /* Color.swift */; };
 		BE2187B62C7E673800FCD384 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B52C7E673800FCD384 /* HeaderView.swift */; };
 		BE2187B82C7E6C1300FCD384 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2187B72C7E6C1300FCD384 /* UIStackView.swift */; };
+		BE31000E2E6EF759004E155A /* SessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE31000C2E6EF759004E155A /* SessionTest.swift */; };
 		BE32CD3D2D441BE3001CA503 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE32CD3C2D441BDB001CA503 /* OnboardingView.swift */; };
 		BE468AF02CB71D3A00578C2E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE468AEF2CB71D3A00578C2E /* Configuration.swift */; };
 		BE468AF32CB71DE500578C2E /* UnleashConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE468AF22CB71DE500578C2E /* UnleashConfiguration.swift */; };
@@ -99,6 +100,7 @@
 		BE2187B32C7E632100FCD384 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BE2187B52C7E673800FCD384 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		BE2187B72C7E6C1300FCD384 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		BE31000C2E6EF759004E155A /* SessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTest.swift; sourceTree = "<group>"; };
 		BE32CD3C2D441BDB001CA503 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BE468AEF2CB71D3A00578C2E /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		BE468AF22CB71DE500578C2E /* UnleashConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnleashConfiguration.swift; sourceTree = "<group>"; };
@@ -138,10 +140,6 @@
 		BEFF15CB2C6BDDF40095FFA5 /* NewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIService.swift; sourceTree = "<group>"; };
 		BEFF15CD2C6BE0140095FFA5 /* EverythingService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EverythingService+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BE1DDA562D356CE8009C1194 /* CocoaNewsTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CocoaNewsTests; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BE1DDA522D356CE8009C1194 /* Frameworks */ = {
@@ -275,7 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1EB9B02C5811A80071CF37 /* CocoaNews */,
-				BE1DDA562D356CE8009C1194 /* CocoaNewsTests */,
+				BE31000D2E6EF759004E155A /* CocoaNewsTests */,
 				BE1EB9AF2C5811A80071CF37 /* Products */,
 				9419C3FD0294035F4AC2C930 /* Pods */,
 				170813F796CEE7364FD4FF1A /* Frameworks */,
@@ -307,6 +305,14 @@
 				BE2187B72C7E6C1300FCD384 /* UIStackView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BE31000D2E6EF759004E155A /* CocoaNewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE31000C2E6EF759004E155A /* SessionTest.swift */,
+			);
+			path = CocoaNewsTests;
 			sourceTree = "<group>";
 		};
 		BE32CD3B2D441A33001CA503 /* Onboarding */ = {
@@ -502,12 +508,7 @@
 			dependencies = (
 				BE1DDA5A2D356CE8009C1194 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				BE1DDA562D356CE8009C1194 /* CocoaNewsTests */,
-			);
 			name = CocoaNewsTests;
-			packageProductDependencies = (
-			);
 			productName = CocoaNewsTests;
 			productReference = BE1DDA552D356CE8009C1194 /* CocoaNewsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -638,6 +639,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE31000E2E6EF759004E155A /* SessionTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
