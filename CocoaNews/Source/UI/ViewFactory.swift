@@ -11,8 +11,8 @@ public final class ViewFactory {
         let shouldUseSwiftUI = configuration.retrieve(from: .useSwiftUI)
         
         let client = NewsAPIClient()
-        let everythingService = EverythingService(apiClient: client)
-        let viewModel = HomePageViewModel(service: everythingService)
+        let headlinesService = HeadlinesService(apiClient: client)
+        let viewModel = HomePageViewModel(service: headlinesService)
         let layoutProvider = HomePageLayoutProvider(shouldUseSwiftUI: shouldUseSwiftUI)
         
         return HomePageViewController(

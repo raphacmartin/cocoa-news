@@ -2,9 +2,9 @@ import RxCocoa
 import RxSwift
 
 final class HomePageViewModel {
-    let service: EverythingService
+    let service: HeadlinesService
     
-    internal init(service: EverythingService) {
+    internal init(service: HeadlinesService) {
         self.service = service
     }
 }
@@ -24,12 +24,12 @@ extension HomePageViewModel: ViewModel {
     func connect(input: Input) -> Output {
         let featuredNews = input.loadFeaturedNews
             .flatMapLatest { [service] _ in
-                service.rx.search(with: "technology")
+                service.rx.get(with: .technology)
             }
         
         let latestNews = input.loadLatestNews
             .flatMapLatest { [service] _ in
-                service.rx.search(with: "elections")
+                service.rx.get(with: .business)
             }
         
         return Output(
