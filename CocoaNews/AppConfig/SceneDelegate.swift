@@ -40,6 +40,7 @@ extension SceneDelegate {
         )
         // Discard the value from the splash Observable and use only the configuration
         .map { $0.1 }
+        .observe(on: MainScheduler.instance)
         .subscribe(onNext: goToInitialPage(basedOn:))
         .disposed(by: disposeBag)
     }
