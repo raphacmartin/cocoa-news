@@ -3,7 +3,9 @@ import UIKit
 
 final class ImageDownloader {
     // MARK: Private properties
-    private var cachedImages = [String: Any]()
+    // Use NSCache for thread safety and memory management
+    private let cache = NSCache<NSString, UIImage>()
+    private let queue = DispatchQueue(label: "com.coconews.imagedownloader.cache", attributes: .concurrent)
     
     // MARK: Singleton
     public static var shared = ImageDownloader()
@@ -15,36 +17,42 @@ final class ImageDownloader {
 extension ImageDownloader {
     public func downloadImage(from url: URL) -> Observable<UIImage> {
         Observable.create { [weak self] observer in
-            var ongoingTask: URLSessionTask? = nil
-            
-            if let cachedImage = self?.cachedImages[url.absoluteString], let uiImage = cachedImage as? UIImage {
-                print("[ImageDownloader] image returned from cache")
-                observer.onNext(uiImage)
-            } else {
-                ongoingTask = URLSession.shared.dataTask(with: url, completionHandler: { data, urlResponse, error in
-                    guard let data = data, error == nil else {
-                        observer.onError(error ?? APIError.systemError("[ImageDownloader] Error downloading image"))
-                        return
-                    }
-                    
-                    print("[ImageDownloader] image was downloaded")
-                    
-                    var cachedImages = self?.cachedImages ?? [:]
-                    cachedImages[url.absoluteString] = data
-                    
-                    guard let image = UIImage(data: data) else {
-                        observer.onError(APIError.systemError("[ImageDownloader] Invalid data"))
-                        return
-                    }
-                    
-                    observer.onNext(image)
-                })
-                
-                ongoingTask?.resume()
+            guard let self = self else {
+                observer.onError(APIError.systemError("[ImageDownloader] Self deallocated"))
+                return Disposables.create()
             }
             
+            let cacheKey = url.absoluteString as NSString
+            
+            // Check cache first (thread-safe)
+            if let cachedImage = self.cache.object(forKey: cacheKey) {
+                print("[ImageDownloader] image returned from cache")
+                observer.onNext(cachedImage)
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            
+            // Download image if not cached
+            let task = URLSession.shared.dataTask(with: url) { data, _, error in
+                if let error = error {
+                    observer.onError(error)
+                    return
+                }
+                guard let data = data, let image = UIImage(data: data) else {
+                    observer.onError(APIError.systemError("[ImageDownloader] Invalid data"))
+                    return
+                }
+                
+                // Store in cache (thread-safe)
+                self.cache.setObject(image, forKey: cacheKey)
+                print("[ImageDownloader] image was downloaded and cached")
+                observer.onNext(image)
+                observer.onCompleted()
+            }
+            task.resume()
+            
             return Disposables.create {
-                ongoingTask?.cancel()
+                task.cancel()
             }
         }
     }
