@@ -103,6 +103,7 @@ extension NewsListViewController {
     private func setupCollectionView() {
         collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "reuseId")
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
 }
 
@@ -124,6 +125,17 @@ extension NewsListViewController: UICollectionViewDataSource {
     }
 }
 
-extension NewsListViewController  {
-    
+// MARK: - UICollectionViewDelegate
+extension NewsListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelectItemAt called for index: \(indexPath.row)")
+        let article = articles[indexPath.row]
+        if navigationController == nil {
+            print("navigationController is nil! Cannot push ArticleDetailViewController.")
+        } else {
+            print("navigationController is present. Pushing ArticleDetailViewController.")
+        }
+        let detailVC = ArticleDetailViewController(urlString: article.url)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }

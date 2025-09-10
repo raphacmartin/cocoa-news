@@ -42,6 +42,7 @@
 		BEB78FFD2D31998200533036 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB78FFC2D31997C00533036 /* SessionManager.swift */; };
 		BEC1B19A2D52C0EC003829FC /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1B1992D52C0E8003829FC /* NavigationManager.swift */; };
 		BEC1B19C2D52C26B003829FC /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1B19B2D52C266003829FC /* ViewFactory.swift */; };
+		BEC86E4B2E70537800A2E820 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC86E492E70537800A2E820 /* ArticleDetailViewController.swift */; };
 		BECAC5BF2C5BCB0C00A4FA6F /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECAC5BE2C5BCB0C00A4FA6F /* HomePageViewModel.swift */; };
 		BECAC5C12C5BCB3100A4FA6F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECAC5C02C5BCB3100A4FA6F /* ViewModel.swift */; };
 		BECAC5C42C5BCB6C00A4FA6F /* HeadlinesService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECAC5C32C5BCB6C00A4FA6F /* HeadlinesService+Rx.swift */; };
@@ -117,6 +118,7 @@
 		BEB78FFC2D31997C00533036 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		BEC1B1992D52C0E8003829FC /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		BEC1B19B2D52C266003829FC /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		BEC86E492E70537800A2E820 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		BECAC5BE2C5BCB0C00A4FA6F /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		BECAC5C02C5BCB3100A4FA6F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		BECAC5C32C5BCB6C00A4FA6F /* HeadlinesService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeadlinesService+Rx.swift"; sourceTree = "<group>"; };
@@ -398,6 +400,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BEC86E4A2E70537800A2E820 /* ArticleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				BEC86E492E70537800A2E820 /* ArticleDetailViewController.swift */,
+			);
+			path = ArticleDetail;
+			sourceTree = "<group>";
+		};
 		BECAC5BD2C5BCAE400A4FA6F /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +468,7 @@
 		BEDF45B62D4800B000B345D8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BEC86E4A2E70537800A2E820 /* ArticleDetail */,
 				BE32CD3B2D441A33001CA503 /* Onboarding */,
 				BE79887A2CA5EC14005EE8CB /* SplashScreen */,
 				BECAC5BD2C5BCAE400A4FA6F /* HomePage */,
@@ -601,9 +612,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CocoaNews/Pods-CocoaNews-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CocoaNews/Pods-CocoaNews-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -657,6 +672,7 @@
 				BECAC5D12C5BCCCA00A4FA6F /* FeaturedNewsCollectionViewCell.swift in Sources */,
 				BE07D6DC2C5ABCAE00F685D1 /* ArticleCategory.swift in Sources */,
 				BEB78FFD2D31998200533036 /* SessionManager.swift in Sources */,
+				BEC86E4B2E70537800A2E820 /* ArticleDetailViewController.swift in Sources */,
 				BECAC5BF2C5BCB0C00A4FA6F /* HomePageViewModel.swift in Sources */,
 				BE544F5B2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift in Sources */,
 				BECAC5C82C5BCBF100A4FA6F /* ViewCodeBuildable.swift in Sources */,
