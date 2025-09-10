@@ -103,6 +103,7 @@ extension NewsListViewController {
     private func setupCollectionView() {
         collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "reuseId")
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
 }
 
@@ -124,6 +125,18 @@ extension NewsListViewController: UICollectionViewDataSource {
     }
 }
 
-extension NewsListViewController  {
-    
+
+// MARK: - UICollectionViewDelegate
+extension NewsListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let article = articles[indexPath.row]
+        guard let url = URL(string: article.url), UIApplication.shared.canOpenURL(url) else {
+            let alert = UIAlertController(title: "Invalid URL", message: "Unable to open the article. The URL is invalid.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true)
+            return
+        }
+        let detailVC = ArticleDetailViewController(articleURL: url)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }

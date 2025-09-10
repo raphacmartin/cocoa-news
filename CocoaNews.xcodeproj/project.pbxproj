@@ -39,6 +39,7 @@
 		BE7988792CA5EBDB005EE8CB /* splash_background.png in Resources */ = {isa = PBXBuildFile; fileRef = BE7988782CA5EBDB005EE8CB /* splash_background.png */; };
 		BE79887C2CA5EC46005EE8CB /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE79887B2CA5EC46005EE8CB /* SplashScreenViewController.swift */; };
 		BE79887E2CA5ED45005EE8CB /* splash_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BE79887D2CA5ED45005EE8CB /* splash_video.mp4 */; };
+		BE7C4F632E719BFF00785E9D /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C4F622E719BFF00785E9D /* ArticleDetailViewController.swift */; };
 		BEB78FFD2D31998200533036 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB78FFC2D31997C00533036 /* SessionManager.swift */; };
 		BEC1B19A2D52C0EC003829FC /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1B1992D52C0E8003829FC /* NavigationManager.swift */; };
 		BEC1B19C2D52C26B003829FC /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC1B19B2D52C266003829FC /* ViewFactory.swift */; };
@@ -114,6 +115,7 @@
 		BE7988782CA5EBDB005EE8CB /* splash_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_background.png; sourceTree = "<group>"; };
 		BE79887B2CA5EC46005EE8CB /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		BE79887D2CA5ED45005EE8CB /* splash_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash_video.mp4; sourceTree = "<group>"; };
+		BE7C4F622E719BFF00785E9D /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		BEB78FFC2D31997C00533036 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		BEC1B1992D52C0E8003829FC /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		BEC1B19B2D52C266003829FC /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 		BEDF45B62D4800B000B345D8 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BE7C4F622E719BFF00785E9D /* ArticleDetailViewController.swift */,
 				BE32CD3B2D441A33001CA503 /* Onboarding */,
 				BE79887A2CA5EC14005EE8CB /* SplashScreen */,
 				BECAC5BD2C5BCAE400A4FA6F /* HomePage */,
@@ -601,9 +604,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CocoaNews/Pods-CocoaNews-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CocoaNews/Pods-CocoaNews-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -657,6 +664,7 @@
 				BECAC5D12C5BCCCA00A4FA6F /* FeaturedNewsCollectionViewCell.swift in Sources */,
 				BE07D6DC2C5ABCAE00F685D1 /* ArticleCategory.swift in Sources */,
 				BEB78FFD2D31998200533036 /* SessionManager.swift in Sources */,
+				BE7C4F632E719BFF00785E9D /* ArticleDetailViewController.swift in Sources */,
 				BECAC5BF2C5BCB0C00A4FA6F /* HomePageViewModel.swift in Sources */,
 				BE544F5B2C5D70AE00C29949 /* FeaturedNewsViewControllerSwiftUI.swift in Sources */,
 				BECAC5C82C5BCBF100A4FA6F /* ViewCodeBuildable.swift in Sources */,

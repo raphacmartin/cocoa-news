@@ -9,16 +9,16 @@ public final class ViewFactory {
     
     func buildHomeViewController() -> UIViewController {
         let shouldUseSwiftUI = configuration.retrieve(from: .useSwiftUI)
-        
         let client = NewsAPIClient()
         let headlinesService = HeadlinesService(apiClient: client)
         let viewModel = HomePageViewModel(service: headlinesService)
         let layoutProvider = HomePageLayoutProvider(shouldUseSwiftUI: shouldUseSwiftUI)
-        
-        return HomePageViewController(
+        let homeVC = HomePageViewController(
             viewModel: viewModel,
             layoutProvider: layoutProvider
         )
+        // Ensure navigation works for detail pages
+        return UINavigationController(rootViewController: homeVC)
     }
     
     func buildOnboardingViewController() -> UIViewController {
