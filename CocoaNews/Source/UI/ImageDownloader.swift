@@ -3,7 +3,7 @@ import UIKit
 
 final class ImageDownloader {
     // MARK: Private properties
-    private var cachedImages = [String: Any]()
+    private var cachedImages = [String: UIImage]() // Store UIImage instead of Any
     
     // MARK: Singleton
     public static var shared = ImageDownloader()
@@ -17,9 +17,9 @@ extension ImageDownloader {
         Observable.create { [weak self] observer in
             var ongoingTask: URLSessionTask? = nil
             
-            if let cachedImage = self?.cachedImages[url.absoluteString], let uiImage = cachedImage as? UIImage {
+            if let cachedImage = self?.cachedImages[url.absoluteString] {
                 print("[ImageDownloader] image returned from cache")
-                observer.onNext(uiImage)
+                observer.onNext(cachedImage)
             } else {
                 ongoingTask = URLSession.shared.dataTask(with: url, completionHandler: { data, urlResponse, error in
                     guard let data = data, error == nil else {
@@ -29,14 +29,12 @@ extension ImageDownloader {
                     
                     print("[ImageDownloader] image was downloaded")
                     
-                    var cachedImages = self?.cachedImages ?? [:]
-                    cachedImages[url.absoluteString] = data
-                    
                     guard let image = UIImage(data: data) else {
                         observer.onError(APIError.systemError("[ImageDownloader] Invalid data"))
                         return
                     }
                     
+                    self?.cachedImages[url.absoluteString] = image // Cache the UIImage
                     observer.onNext(image)
                 })
                 
