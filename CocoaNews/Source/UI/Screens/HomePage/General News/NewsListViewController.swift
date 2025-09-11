@@ -53,6 +53,7 @@ final class NewsListViewController: UIViewController {
         
         setupCollectionView()
         buildView()
+        collectionView.delegate = self
     }
 }
 
@@ -126,4 +127,25 @@ extension NewsListViewController: UICollectionViewDataSource {
 
 extension NewsListViewController  {
     
+}
+
+// MARK: - UICollectionViewDelegate
+extension NewsListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let article = articles[indexPath.item]
+        let urlString = article.url
+        guard let url = URL(string: urlString) else {
+            showError("Invalid article URL")
+            return
+        }
+        let detailVC = ArticleDetailViewController()
+        detailVC.articleURL = url
+        present(detailVC, animated: true, completion: nil)
+    }
+
+    private func showError(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }

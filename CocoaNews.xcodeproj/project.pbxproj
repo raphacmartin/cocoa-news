@@ -64,6 +64,7 @@
 		BEFF15C82C6BDC1D0095FFA5 /* EverythingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF15C72C6BDC1D0095FFA5 /* EverythingService.swift */; };
 		BEFF15CC2C6BDDF40095FFA5 /* NewsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF15CB2C6BDDF40095FFA5 /* NewsAPIService.swift */; };
 		BEFF15CE2C6BE0140095FFA5 /* EverythingService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFF15CD2C6BE0140095FFA5 /* EverythingService+Rx.swift */; };
+		NEW_FILE_ID /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = NEW_FILE_REF_ID /* ArticleDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		BEFF15C72C6BDC1D0095FFA5 /* EverythingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverythingService.swift; sourceTree = "<group>"; };
 		BEFF15CB2C6BDDF40095FFA5 /* NewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIService.swift; sourceTree = "<group>"; };
 		BEFF15CD2C6BE0140095FFA5 /* EverythingService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EverythingService+Rx.swift"; sourceTree = "<group>"; };
+		NEW_FILE_REF_ID /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +465,7 @@
 				BECAC5BD2C5BCAE400A4FA6F /* HomePage */,
 				BECAC5C02C5BCB3100A4FA6F /* ViewModel.swift */,
 				BECAC5C72C5BCBF100A4FA6F /* ViewCodeBuildable.swift */,
+				NEW_FILE_REF_ID /* ArticleDetailViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				BE32CD3D2D441BE3001CA503 /* OnboardingView.swift in Sources */,
 				BED21B882CBF0A8E00EB7FBC /* FallbackConfiguration.swift in Sources */,
 				BE544F642C5D7AE000C29949 /* FeaturedNewsItem.swift in Sources */,
+				NEW_FILE_ID /* ArticleDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
